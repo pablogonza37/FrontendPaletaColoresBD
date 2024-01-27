@@ -2,25 +2,33 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import MuestraColor from "./MuestraColor";
+import ListaColores from "./ListaColores";
+import { Col, Row } from "react-bootstrap";
 
 const FormularioColor = () => {
   return (
     <section>
       <Form>
-        <Card className="text-center mx-5">
-          <Card.Header>Featured</Card.Header>
-          <Card.Body className="d-flex justify-content-evenly">
-            <MuestraColor></MuestraColor>
-
-            <Form.Group
-              className="mb-3 my-5"
+        <Card className="text-center">
+          <Card.Header>Administrar colores</Card.Header>
+          <Card.Body className="d-flex justify-content-center">
+          <Row className='w-100 p-3'>
+        <Col md={4} className="d-flex justify-content-center"><MuestraColor></MuestraColor></Col>
+        <Col md={8}><Form.Group
+              className="my-4"
               controlId="exampleForm.ControlInput1"
             >
               <Form.Control
                 type="text"
                 placeholder="Ingrese un color ej: blue"
+                minLength={3}
+                maxLength={10}
               />
-            </Form.Group>
+            </Form.Group></Col>
+      </Row>
+            
+
+            
           </Card.Body>
           <Card.Footer className="text-muted">
             <Button variant="primary" type="submit">
@@ -29,6 +37,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
+      <ListaColores></ListaColores>
     </section>
   );
 };
