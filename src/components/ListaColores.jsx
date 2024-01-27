@@ -3,11 +3,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-const ListaColores = () => {
+const ListaColores = ({colores}) => {
     return (
         <div className='my-5 text-center'>
         <Row className="d-flex justify-content-center">
-        <Col md={4} className="mb-2"><ItemColores></ItemColores></Col>
+          {
+             colores.map((color, posicionColor)=><Col md={4} className="mb-2"><ItemColores key={posicionColor} nombreColor={color}></ItemColores></Col>)
+          };
+       
+        
       </Row>
         </div>
     );

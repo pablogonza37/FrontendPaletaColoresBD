@@ -2,10 +2,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import MuestraColor from "./MuestraColor";
 
-const ItemColores = () => {
+const ItemColores = ({nombreColor}) => {
   return (
     <Card className="text-center">
-      <Card.Header>Nombre color</Card.Header>
+      <Card.Header>{nombreColor}</Card.Header>
       <Card.Body className="d-flex justify-content-center">
         <MuestraColor></MuestraColor>
       </Card.Body>

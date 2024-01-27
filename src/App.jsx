@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-    <Container className=".mainPage">
+    <Container className="mainPage">
       <h1 className="display-3 text-center my-3">Paleta de Colores</h1>
       <FormularioColor></FormularioColor>
     </Container>

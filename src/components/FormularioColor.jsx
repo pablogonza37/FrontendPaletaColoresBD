@@ -1,14 +1,24 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
 import MuestraColor from "./MuestraColor";
 import ListaColores from "./ListaColores";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Form } from "react-bootstrap";
+import { useState } from "react";
 
 const FormularioColor = () => {
+  const [color, setColor] = useState("");
+  const [colores, setColores] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setColores([...colores, color]);
+    setColor('');
+  };
+
+
   return (
     <section>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Card className="text-center">
           <Card.Header>Administrar colores</Card.Header>
           <Card.Body className="d-flex justify-content-center">
@@ -26,6 +36,8 @@ const FormularioColor = () => {
                     placeholder="Ingrese un color ej: blue"
                     minLength={3}
                     maxLength={10}
+                    onChange={(e) => setColor(e.target.value)}
+                    value={color}
                   />
                 </Form.Group>
               </Col>
@@ -38,7 +50,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <ListaColores></ListaColores>
+      <ListaColores colores={colores}></ListaColores>
     </section>
   );
 };
