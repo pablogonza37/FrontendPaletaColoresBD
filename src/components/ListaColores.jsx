@@ -8,7 +8,9 @@ const ListaColores = ({colores}) => {
         <div className='my-5 text-center'>
         <Row className="d-flex justify-content-center">
           {
-             colores.map((color, posicionColor)=><Col md={4} className="mb-2"><ItemColores key={posicionColor} nombreColor={color}></ItemColores></Col>)
+             colores.map((color, posicionColor)=><Col md={4} className="mb-2" key={posicionColor}
+             ><ItemColores nombreColor={color}></ItemColores>
+             </Col>)
           };
        
         

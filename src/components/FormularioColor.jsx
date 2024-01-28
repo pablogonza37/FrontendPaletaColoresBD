@@ -1,9 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import MuestraColor from "./MuestraColor";
 import ListaColores from "./ListaColores";
 import { Col, Row, Form } from "react-bootstrap";
 import { useState } from "react";
+
 
 const FormularioColor = () => {
   const [color, setColor] = useState("");
@@ -15,6 +15,7 @@ const FormularioColor = () => {
     setColor('');
   };
 
+  
 
   return (
     <section>
@@ -24,7 +25,9 @@ const FormularioColor = () => {
           <Card.Body className="d-flex justify-content-center">
             <Row className="w-100 p-3">
               <Col md={4} className="d-flex justify-content-center">
-                <MuestraColor></MuestraColor>
+              <div className="muestraColor mx-3">
+            
+            </div>
               </Col>
               <Col md={8}>
                 <Form.Group

@@ -4,7 +4,10 @@ import Container from 'react-bootstrap/Container';
 import FormularioColor from "./components/FormularioColor";
 import Footer from "./components/Footer";
 
+
 function App() {
+
+ 
   return (
     <>
     <Container className="mainPage">
@@ -15,5 +18,7 @@ function App() {
     </>
   );
 }
+
+
 
 export default App;
