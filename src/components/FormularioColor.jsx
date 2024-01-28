@@ -15,7 +15,10 @@ const FormularioColor = () => {
     setColor('');
   };
 
-  
+  const borrarColor = (nombreColor)=>{
+    const ColoresFiltrados = colores.filter((color)=>color !== nombreColor); 
+    setColores(ColoresFiltrados);
+  }
 
   return (
     <section>
@@ -53,7 +56,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <ListaColores colores={colores}></ListaColores>
+      <ListaColores colores={colores} borrarColor={borrarColor}></ListaColores>
     </section>
   );
 };

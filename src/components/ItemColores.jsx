@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import MuestraColor from "./MuestraColor";
 
 
-const ItemColores = ({ nombreColor }) => {
+const ItemColores = ({ nombreColor, borrarColor }) => {
 
 
 const mayusculaPrimerLetra = (string) => {
@@ -17,7 +17,7 @@ const mayusculaPrimerLetra = (string) => {
       <MuestraColor fondo={nombreColor}></MuestraColor>
       </Card.Body>
       <Card.Footer className="text-muted">
-        <Button variant="danger" type="submit">
+        <Button variant="danger" type="submit" onClick={() => borrarColor(nombreColor)}>
           Borrar
         </Button>
       </Card.Footer>
