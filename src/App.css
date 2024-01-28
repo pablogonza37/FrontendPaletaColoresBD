@@ -1,24 +1,56 @@
-.muestraColor{
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    background-color: red;
+.muestraColor {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: red;
 }
 
-.card-body{
-    height: auto;
+.card-body {
+  height: auto;
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .mainPage {
-    flex-grow: 1;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  body{
-    background-color:cyan;
-  }
+.mainPage {
+  flex-grow: 1;
+}
+
+body {
+  background: rgba(25, 22, 84, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(25, 22, 84, 1)),
+    color-stop(100%, rgba(67, 198, 172, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191654', endColorstr='#43c6ac', GradientType=1 );
+}

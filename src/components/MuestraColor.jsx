@@ -4,12 +4,13 @@ const ColoredDiv = styled.div`
   width: 100px;
   height: 100px;
   border: 1px solid black;
-  ${(props) => props.backgroundColor && `background-color: ${props.backgroundColor};`}
+  ${(props) =>
+    props.backgroundColor && `background-color: ${props.backgroundColor};`}
 `;
 
 const MuestraColor = ({ fondo }) => {
   return (
-    <StyleSheetManager shouldForwardProp={(prop) => prop !== 'backgroundColor'}>
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== "backgroundColor"}>
       <ColoredDiv backgroundColor={fondo}></ColoredDiv>
     </StyleSheetManager>
   );
