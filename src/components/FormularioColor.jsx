@@ -38,49 +38,26 @@ const FormularioColor = () => {
 
   const [error, setError] = useState("");
 
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value.toLowerCase();
-    const colorRegex =
-      /^(red|green|blue|yellow|orange|purple|pink|cyan|magenta)$/i;
-
-    setColor(inputValue);
-
-    if (!colorRegex.test(inputValue)) {
-      setError("Ingrese un nombre de color válido");
-    } else {
-      setError("");
-    }
-  };
-
   return (
-    <section>
-      <Form onSubmit={handleSubmit}>
-        <Card className="text-center">
-          <Card.Header>Administrar colores</Card.Header>
-          <Card.Body className="d-flex justify-content-center">
-            <Row className="w-100 p-3">
-              <Col md={4} className="d-flex justify-content-center">
-                <div className="muestraColor mx-3"></div>
-              </Col>
-              <Col md={8}>
-                <Form.Group
-                  className="my-4"
-                  controlId="exampleForm.ControlInput1"
-                >
-                  <Form.Control
-                    type="text"
-                    placeholder="Ingrese un color ej: red"
-                    minLength={3}
-                    maxLength={10}
-                    onChange={(e) => {
-                      setColor(e.target.value);
-                      handleInputChange(e);
-                    }}
-                    value={color}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
+    <section className="container ">
+      <Form onSubmit={handleSubmit} className='px-lg-5'>
+        <Card className="text-center m-lg-5">
+          <Card.Header className='display-6'>Administrar colores</Card.Header>
+          <Card.Body className="text-center d-flex justify-content-center flex-column">
+            <Form.Label htmlFor="exampleColorInput">Elija un color: </Form.Label>
+            <div className="d-flex justify-content-center">
+            <Form.Control
+              type="color"
+              id="exampleColorInput"
+              className="inputColor"
+              defaultValue="#563d7c"
+              title="Choose your color"
+              onChange={(e) => {
+                setColor(e.target.value);
+              
+              }}
+            />
+            </div>
           </Card.Body>
           <Card.Footer className="text-muted">
             <Button variant="primary" type="submit">
@@ -89,6 +66,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
+      <hr />
       <ListaColores colores={colores} borrarColor={borrarColor}></ListaColores>
     </section>
   );

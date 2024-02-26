@@ -8,7 +8,7 @@ const ItemColores = ({ nombreColor, borrarColor }) => {
   };
 
   return (
-    <Card className="text-center shadow-lg">
+    <Card className="text-center shadow-lg mb-2">
       <Card.Header>{mayusculaPrimerLetra(nombreColor)}</Card.Header>
       <Card.Body className="d-flex justify-content-center">
         <MuestraColor fondo={nombreColor}></MuestraColor>

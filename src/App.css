@@ -54,3 +54,8 @@ body {
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191654', endColorstr='#43c6ac', GradientType=1 );
 }
+
+.inputColor{
+width: 100px;
+height: 100px;
+}
