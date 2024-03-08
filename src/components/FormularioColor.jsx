@@ -1,7 +1,5 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import {Button, Card, Form} from "react-bootstrap";
 import ListaColores from "./ListaColores";
-import { Col, Row, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 const FormularioColor = () => {
@@ -44,7 +42,7 @@ const FormularioColor = () => {
         <Card className="text-center m-lg-5">
           <Card.Header className='display-6'>Administrar colores</Card.Header>
           <Card.Body className="text-center d-flex justify-content-center flex-column">
-            <Form.Label htmlFor="exampleColorInput">Elija un color: </Form.Label>
+            <Form.Label htmlFor="exampleColorInput">Seleccione un color: </Form.Label>
             <div className="d-flex justify-content-center">
             <Form.Control
               type="color"
@@ -66,7 +64,6 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <hr />
       <ListaColores colores={colores} borrarColor={borrarColor}></ListaColores>
     </section>
   );
