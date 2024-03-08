@@ -8,6 +8,10 @@ Agregar Colores: Los usuarios pueden ingresar un color en formato hexadecimal en
 
 Eliminar Colores: Cada color guardado se muestra en la lista con un botón para eliminarlo de la lista y del LocalStorage.
 
+## Demo
+
+Puedes ver una demostración del proyecto en vivo en [Netlify](https://super-choux-802129.netlify.app/).
+
 ## Instalación
 Para ejecutar esta aplicación en tu entorno local, sigue estos pasos:
 
