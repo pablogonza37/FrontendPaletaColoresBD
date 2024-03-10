@@ -92,7 +92,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <ListaColores colores={colores}></ListaColores>
+      <ListaColores colores={colores} setColores={setColores}></ListaColores>
     </section>
   );
 };

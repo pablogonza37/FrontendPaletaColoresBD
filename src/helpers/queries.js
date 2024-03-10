@@ -27,3 +27,14 @@ export const leerColoresAPI = async () => {
       console.log(error);
     }
   };
+
+  export const borrarColorAPI = async (id) => {
+    try {
+      const respuesta = await fetch(`${URL_colores}/${id}`, {
+        method: "DELETE",
+      });
+      return respuesta;
+    } catch (error) {
+      console.log(error);
+    }
+  };

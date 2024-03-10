@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap-icons/font/bootstrap-icons.min.css'
 import "./App.css";
 import Container from "react-bootstrap/Container";
 import FormularioColor from "./components/FormularioColor";

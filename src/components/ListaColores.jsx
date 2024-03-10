@@ -2,7 +2,7 @@ import ItemColores from "./ItemColores";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const ListaColores = ({ colores }) => {
+const ListaColores = ({ colores, setColores }) => {
 
   return (
     <div className="my-3 text-center">
@@ -10,7 +10,7 @@ const ListaColores = ({ colores }) => {
         {colores.map((color, posicionColor) => (
           <Col md={4} className="mb-2" key={posicionColor}>
             <ItemColores
-              color={color}
+              color={color} setColores={setColores}
             ></ItemColores>
           </Col>
         ))}
