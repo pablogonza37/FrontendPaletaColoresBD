@@ -4,41 +4,20 @@ import { useState, useEffect } from "react";
 
 const FormularioColor = () => {
   const [color, setColor] = useState("");
-  const coloresLocalStorage =
-    JSON.parse(localStorage.getItem("coloresKey")) || [];
-  const [colores, setColores] = useState(coloresLocalStorage);
+  
+  const [colores, setColores] = useState();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!error && color) {
-      setColores([...colores, color]);
-      setColor("");
-    } else {
-      alert("Color inválido");
-    }
-  };
-
-  const borrarColor = (nombreColor) => {
-    const indiceColor = colores.findIndex((color) => color === nombreColor);
-    if (indiceColor !== -1) {
-      const nuevosColores = [
-        ...colores.slice(0, indiceColor),
-        ...colores.slice(indiceColor + 1),
-      ];
-      setColores(nuevosColores);
-    }
-  };
+ 
 
   useEffect(() => {
-    localStorage.setItem("coloresKey", JSON.stringify(colores));
-  }, [colores]);
+    
+  }, []);
 
-  const [error, setError] = useState("");
+  
 
   return (
     <section className="container ">
-      <Form onSubmit={handleSubmit} className='px-lg-5'>
+      <Form className='px-lg-5'>
         <Card className="text-center m-lg-5">
           <Card.Header className='display-6'>Administrar colores</Card.Header>
           <Card.Body className="text-center d-flex justify-content-center flex-column">
@@ -50,10 +29,6 @@ const FormularioColor = () => {
               className="inputColor"
               defaultValue="#563d7c"
               title="Choose your color"
-              onChange={(e) => {
-                setColor(e.target.value);
-              
-              }}
             />
             </div>
           </Card.Body>
@@ -64,7 +39,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <ListaColores colores={colores} borrarColor={borrarColor}></ListaColores>
+      <ListaColores></ListaColores>
     </section>
   );
 };

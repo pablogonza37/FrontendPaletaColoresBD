@@ -1,0 +1,22 @@
+{
+    "colores": [
+      { 
+        "id": "1",
+        "nombreColor": "rojo",
+        "codHexadecimal": "gfhgfh",
+        "codRGB": "fghfgh"
+      },
+      {
+        "id": "2",
+        "nombreColor": "rojo",
+        "codHexadecimal": "gfhgfh",
+        "codRGB": "fghfgh"
+      },
+      {
+        "id": "3",
+        "nombreColor": "rojo",
+        "codHexadecimal": "gfhgfh",
+        "codRGB": "fghfgh"
+      }
+    ]
+  }
