@@ -38,3 +38,19 @@ export const leerColoresAPI = async () => {
       console.log(error);
     }
   };
+
+  
+  export const editarColorAPI = async (colorModificado, id) => {
+    try {
+      const respuesta = await fetch(`${URL_colores}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(colorModificado),
+      });
+      return respuesta;
+    } catch (error) {
+      console.log(error);
+    }
+  };

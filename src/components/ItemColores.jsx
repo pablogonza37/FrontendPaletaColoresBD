@@ -1,10 +1,23 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Button, Card, Form, Modal } from "react-bootstrap";
 import MuestraColor from "./MuestraColor";
-import { borrarColorAPI, leerColoresAPI } from "../helpers/queries";
+import {
+  borrarColorAPI,
+  editarColorAPI,
+  leerColoresAPI,
+} from "../helpers/queries";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-const ItemColores = ({ color, setColores }) => {
+const ItemColores = ({ color, setColores, hexRgb, encontarNombreColor }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const borrarColor = () => {
     Swal.fire({
@@ -36,29 +49,88 @@ const ItemColores = ({ color, setColores }) => {
         }
       }
     });
+  };
 
-  }
+  const abrirModal = () => {
+    handleShow();
+  };
+  const editarColor = async (codHexadecimal) => {
+    const hexa = codHexadecimal;
+    console.log(hexa.codHexadecimal);
+    const rgb = hexRgb(hexa.codHexadecimal);
+    const nombreColor = encontarNombreColor(rgb);
+    codHexadecimal.rgb = rgb;
+    codHexadecimal.nombreColor = nombreColor;
+    editarColorAPI(codHexadecimal, color.id);
+    const listaColores = await leerColoresAPI();
+    setColores(listaColores);
+    handleClose();
+  };
+
   return (
-    <Card className="text-center shadow-lg mb-2">
-      <Card.Header>
-      <span><b>{color.nombreColor} </b></span>
-      </Card.Header>
-      <Card.Body className="d-flex justify-content-center flex-column">
-        <div className="d-flex justify-content-center">
-        <MuestraColor fondo={color.codHexadecimal} className='text-center'></MuestraColor>
-        </div>
-       <span><b>{color.codHexadecimal}</b></span>
-       <span><b>R={color.rgb.r}, G={color.rgb.g}, B={color.rgb.b}</b></span>
-      </Card.Body>
-      <Card.Footer className="text-muted ">
-        <Button
-          variant="danger"
-          onClick={borrarColor}
-        >
-          <i className="bi bi-trash3-fill"></i>
-        </Button>
-      </Card.Footer>
-    </Card>
+    <>
+      <Card className="text-center shadow-lg mb-2">
+        <Card.Header>
+          <span>
+            <b>{color.nombreColor} </b>
+          </span>
+        </Card.Header>
+        <Card.Body className="d-flex justify-content-center flex-column">
+          <div className="d-flex justify-content-center">
+            <MuestraColor
+              fondo={color.codHexadecimal}
+              className="text-center"
+            ></MuestraColor>
+          </div>
+          <span>
+            <b>{color.codHexadecimal}</b>
+          </span>
+          <span>
+            <b>
+              R={color.rgb.r}, G={color.rgb.g}, B={color.rgb.b}
+            </b>
+          </span>
+        </Card.Body>
+        <Card.Footer className="text-muted ">
+          <Button variant="warning" className="me-1" onClick={abrirModal}>
+            <i className="bi bi-pencil-square"></i>
+          </Button>
+          <Button variant="danger" onClick={borrarColor}>
+            <i className="bi bi-trash3-fill"></i>
+          </Button>
+        </Card.Footer>
+      </Card>
+
+      <Modal show={show} onHide={handleClose}>
+        <Form className="px-lg-5" onSubmit={handleSubmit(editarColor)}>
+          <Card className="text-center m-lg-5">
+            <Card.Header className="display-6">Editar colores</Card.Header>
+            <Card.Body className="text-center d-flex justify-content-center flex-column">
+              <Form.Label htmlFor="exampleColorInput">
+                Seleccione un color:{" "}
+              </Form.Label>
+              <div className="d-flex justify-content-center">
+                <Form.Control
+                  type="color"
+                  id="exampleColorInput"
+                  className="inputColor"
+                  defaultValue={color.codHexadecimal}
+                  title="Choose your color"
+                  {...register("codHexadecimal", {
+                    required: "El campo es obligatorio",
+                  })}
+                />
+              </div>
+            </Card.Body>
+            <Card.Footer className="text-muted">
+              <Button variant="primary" type="submit">
+                Guardar
+              </Button>
+            </Card.Footer>
+          </Card>
+        </Form>
+      </Modal>
+    </>
   );
 };
 

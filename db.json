@@ -1,44 +1,34 @@
 {
   "colores": [
     {
-      "id": "0cab",
-      "codHexadecimal": "#000000",
+      "id": "5beb",
+      "codHexadecimal": "#ff0000",
       "rgb": {
-        "r": 0,
+        "r": 255,
         "g": 0,
         "b": 0
       },
-      "nombreColor": "black"
+      "nombreColor": "red"
     },
     {
-      "id": "5b47",
       "codHexadecimal": "#ffffff",
       "rgb": {
         "r": 255,
         "g": 255,
         "b": 255
       },
-      "nombreColor": "white"
+      "nombreColor": "white",
+      "id": "3eed"
     },
     {
-      "id": "4431",
-      "codHexadecimal": "#41256a",
+      "codHexadecimal": "#59ff00",
       "rgb": {
-        "r": 65,
-        "g": 37,
-        "b": 106
-      },
-      "nombreColor": "Color desconocido"
-    },
-    {
-      "id": "81d8",
-      "codHexadecimal": "#66ff00",
-      "rgb": {
-        "r": 102,
+        "r": 89,
         "g": 255,
         "b": 0
       },
-      "nombreColor": "Color desconocido"
+      "nombreColor": "Color desconocido",
+      "id": "101b"
     }
   ]
 }

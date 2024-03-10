@@ -38,8 +38,8 @@ const FormularioColor = () => {
   };
 
   // Función para convertir un valor hexadecimal a RGB
-  function hexRgb(hex) {
-    hex = hex.replace(/^#/, "");
+  const hexRgb = (hex)=> {
+    hex = hex.substring(1);
     var bigint = parseInt(hex, 16);
     var r = (bigint >> 16) & 255;
     var g = (bigint >> 8) & 255;
@@ -48,7 +48,7 @@ const FormularioColor = () => {
   }
 
   // Función para buscar el nombre del color basado en su valor RGB
-  function encontarNombreColor(rgb) {
+  const encontarNombreColor = (rgb)=> {
     for (const name in colorName) {
       if (colorName.hasOwnProperty(name)) {
         if (
@@ -92,7 +92,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <ListaColores colores={colores} setColores={setColores}></ListaColores>
+      <ListaColores colores={colores} setColores={setColores} hexRgb={hexRgb} encontarNombreColor={encontarNombreColor}></ListaColores>
     </section>
   );
 };
