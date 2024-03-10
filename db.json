@@ -1,22 +1,64 @@
 {
-    "colores": [
-      { 
-        "id": "1",
-        "nombreColor": "rojo",
-        "codHexadecimal": "gfhgfh",
-        "codRGB": "fghfgh"
+  "colores": [
+    {
+      "id": "401d",
+      "codHexadecimal": "#000000",
+      "rgb": {
+        "r": 0,
+        "g": 0,
+        "b": 0
       },
-      {
-        "id": "2",
-        "nombreColor": "rojo",
-        "codHexadecimal": "gfhgfh",
-        "codRGB": "fghfgh"
+      "nombreColor": "black"
+    },
+    {
+      "id": "d976",
+      "codHexadecimal": "#5c2aa7",
+      "rgb": {
+        "r": 92,
+        "g": 42,
+        "b": 167
       },
-      {
-        "id": "3",
-        "nombreColor": "rojo",
-        "codHexadecimal": "gfhgfh",
-        "codRGB": "fghfgh"
-      }
-    ]
-  }
+      "nombreColor": "Color desconocido"
+    },
+    {
+      "id": "3f29",
+      "codHexadecimal": "#04ff00",
+      "rgb": {
+        "r": 4,
+        "g": 255,
+        "b": 0
+      },
+      "nombreColor": "Color desconocido"
+    },
+    {
+      "id": "b77b",
+      "codHexadecimal": "#427c41",
+      "rgb": {
+        "r": 66,
+        "g": 124,
+        "b": 65
+      },
+      "nombreColor": "Color desconocido"
+    },
+    {
+      "id": "0cab",
+      "codHexadecimal": "#000000",
+      "rgb": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "nombreColor": "black"
+    },
+    {
+      "id": "5b47",
+      "codHexadecimal": "#ffffff",
+      "rgb": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "nombreColor": "white"
+    }
+  ]
+}
