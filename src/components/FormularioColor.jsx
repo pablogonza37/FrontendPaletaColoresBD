@@ -7,6 +7,7 @@ import { encontrarNombreColor, hexRgb } from "../helpers/convertirColor";
 
 const FormularioColor = () => {
   const [colores, setColores] = useState([]);
+  const [error, setError] = useState(null); 
   const {
     register,
     handleSubmit,
@@ -21,8 +22,10 @@ const FormularioColor = () => {
     try {
       const respuesta = await leerColoresAPI();
       setColores(respuesta);
+      setError(null); 
     } catch (error) {
       console.log(error);
+      setError("Error al cargar los colores desde la API"); 
     }
   };
 
@@ -38,6 +41,7 @@ const FormularioColor = () => {
 
   return (
     <section className="container ">
+      
       <Form className="px-lg-5" onSubmit={handleSubmit(productoValidado)}>
         <Card className="text-center m-lg-5">
           <Card.Header className="display-6">Administrar colores</Card.Header>
@@ -59,13 +63,19 @@ const FormularioColor = () => {
             </div>
           </Card.Body>
           <Card.Footer className="text-muted">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className='w-50'>
               Guardar
-            </Button>
+            </Button>  
           </Card.Footer>
         </Card>
       </Form>
+      {error && <div className="alert alert-info mt-3">{error}</div>}
+      {!error && colores.length === 0 && (
+        <div className="alert alert-info mt-3">No hay colores.</div>
+      )}
+      {colores.length > 0 && ( <div>
       <ListaColores colores={colores} setColores={setColores}></ListaColores>
+      </div>)}
     </section>
   );
 };

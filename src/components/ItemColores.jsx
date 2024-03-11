@@ -100,9 +100,9 @@ const ItemColores = ({ color, setColores }) => {
       </Card>
 
       <Modal show={show} onHide={handleClose}>
-        <Form className="px-lg-5" onSubmit={handleSubmit(editarColor)} >
-          <Card className="text-center m-lg-5">
-            <Card.Header className="display-6">Editar colores</Card.Header>
+        <Form onSubmit={handleSubmit(editarColor)} >
+          <Card className="text-center">
+            <Card.Header className="display-6">Editar color</Card.Header>
             <Card.Body className="text-center d-flex justify-content-center flex-column">
               <Form.Label htmlFor="exampleColorInput">
                 Seleccione un color:{" "}
