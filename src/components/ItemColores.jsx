@@ -8,8 +8,9 @@ import {
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { encontrarNombreColor, hexRgb } from "../helpers/convertirColor";
 
-const ItemColores = ({ color, setColores, hexRgb, encontarNombreColor }) => {
+const ItemColores = ({ color, setColores }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,11 +34,6 @@ const ItemColores = ({ color, setColores, hexRgb, encontarNombreColor }) => {
       if (result.isConfirmed) {
         const respuesta = await borrarColorAPI(color.id);
         if (respuesta.status === 200) {
-          Swal.fire({
-            title: "Color eliminado",
-            text: `El color fue eliminado correctamente`,
-            icon: "success",
-          });
           const listaProductos = await leerColoresAPI();
           setColores(listaProductos);
         } else {
@@ -54,11 +50,11 @@ const ItemColores = ({ color, setColores, hexRgb, encontarNombreColor }) => {
   const abrirModal = () => {
     handleShow();
   };
+
   const editarColor = async (codHexadecimal) => {
     const hexa = codHexadecimal;
-    console.log(hexa.codHexadecimal);
     const rgb = hexRgb(hexa.codHexadecimal);
-    const nombreColor = encontarNombreColor(rgb);
+    const nombreColor = encontrarNombreColor(rgb);
     codHexadecimal.rgb = rgb;
     codHexadecimal.nombreColor = nombreColor;
     editarColorAPI(codHexadecimal, color.id);
@@ -66,6 +62,7 @@ const ItemColores = ({ color, setColores, hexRgb, encontarNombreColor }) => {
     setColores(listaColores);
     handleClose();
   };
+
 
   return (
     <>
@@ -80,29 +77,30 @@ const ItemColores = ({ color, setColores, hexRgb, encontarNombreColor }) => {
             <MuestraColor
               fondo={color.codHexadecimal}
               className="text-center"
-            ></MuestraColor>
+            ></MuestraColor>   
           </div>
           <span>
+            <hr />
             <b>{color.codHexadecimal}</b>
-          </span>
+          </span>     
           <span>
             <b>
-              R={color.rgb.r}, G={color.rgb.g}, B={color.rgb.b}
+              R: {color.rgb.r}, G: {color.rgb.g}, B: {color.rgb.b}
             </b>
           </span>
         </Card.Body>
         <Card.Footer className="text-muted ">
-          <Button variant="warning" className="me-1" onClick={abrirModal}>
+          <Button variant="warning" className="me-1" title="Editar" onClick={abrirModal} >
             <i className="bi bi-pencil-square"></i>
           </Button>
-          <Button variant="danger" onClick={borrarColor}>
+          <Button variant="danger" title="Borrar" onClick={borrarColor}>
             <i className="bi bi-trash3-fill"></i>
           </Button>
         </Card.Footer>
       </Card>
 
       <Modal show={show} onHide={handleClose}>
-        <Form className="px-lg-5" onSubmit={handleSubmit(editarColor)}>
+        <Form className="px-lg-5" onSubmit={handleSubmit(editarColor)} >
           <Card className="text-center m-lg-5">
             <Card.Header className="display-6">Editar colores</Card.Header>
             <Card.Body className="text-center d-flex justify-content-center flex-column">

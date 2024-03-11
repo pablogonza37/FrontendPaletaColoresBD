@@ -3,10 +3,9 @@ import ListaColores from "./ListaColores";
 import { useState, useEffect } from "react";
 import { agregarColoresAPI, leerColoresAPI } from "../helpers/queries";
 import { useForm } from "react-hook-form";
-import colorName from "color-name";
+import { encontrarNombreColor, hexRgb } from "../helpers/convertirColor";
 
 const FormularioColor = () => {
-  const [color, setColor] = useState("");
   const [colores, setColores] = useState([]);
   const {
     register,
@@ -30,38 +29,12 @@ const FormularioColor = () => {
   const productoValidado = async (color) => {
     const hexa = color.codHexadecimal;
     const rgb = hexRgb(hexa);
-    const nombreColor = encontarNombreColor(rgb);
+    const nombreColor = encontrarNombreColor(rgb);
     color.rgb = rgb;
     color.nombreColor = nombreColor;
     const respuesta = await agregarColoresAPI(color);
     consultarAPI();
   };
-
-  // Función para convertir un valor hexadecimal a RGB
-  const hexRgb = (hex)=> {
-    hex = hex.substring(1);
-    var bigint = parseInt(hex, 16);
-    var r = (bigint >> 16) & 255;
-    var g = (bigint >> 8) & 255;
-    var b = bigint & 255;
-    return { r: r, g: g, b: b };
-  }
-
-  // Función para buscar el nombre del color basado en su valor RGB
-  const encontarNombreColor = (rgb)=> {
-    for (const name in colorName) {
-      if (colorName.hasOwnProperty(name)) {
-        if (
-          colorName[name][0] === rgb.r &&
-          colorName[name][1] === rgb.g &&
-          colorName[name][2] === rgb.b
-        ) {
-          return name;
-        }
-      }
-    }
-    return "Color desconocido";
-  }
 
   return (
     <section className="container ">
@@ -92,7 +65,7 @@ const FormularioColor = () => {
           </Card.Footer>
         </Card>
       </Form>
-      <ListaColores colores={colores} setColores={setColores} hexRgb={hexRgb} encontarNombreColor={encontarNombreColor}></ListaColores>
+      <ListaColores colores={colores} setColores={setColores}></ListaColores>
     </section>
   );
 };

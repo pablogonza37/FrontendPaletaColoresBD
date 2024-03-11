@@ -1,7 +1,5 @@
 const URL_colores = import.meta.env.VITE_API_COLORES;
 
-console.log(URL_colores);
-
 export const leerColoresAPI = async () => {
     try {
       const respuesta = await fetch(URL_colores);
