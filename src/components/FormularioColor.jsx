@@ -21,7 +21,7 @@ const FormularioColor = () => {
   const consultarAPI = async () => {
     try {
       const respuesta = await leerColoresAPI();
-      setColores(respuesta);
+      setColores(respuesta.reverse());
       setError(null); 
     } catch (error) {
       console.log(error);
@@ -42,7 +42,7 @@ const FormularioColor = () => {
   return (
     <section className="container ">
       
-      <Form className="px-lg-5" onSubmit={handleSubmit(productoValidado)}>
+      <Form className="px-lg-5 " onSubmit={handleSubmit(productoValidado)}>
         <Card className="text-center m-lg-5">
           <Card.Header className="display-6">Administrar colores</Card.Header>
           <Card.Body className="text-center d-flex justify-content-center flex-column">
@@ -64,7 +64,7 @@ const FormularioColor = () => {
           </Card.Body>
           <Card.Footer className="text-muted">
             <Button variant="primary" type="submit" className='w-50'>
-              Guardar
+              Agregar
             </Button>  
           </Card.Footer>
         </Card>

@@ -63,13 +63,12 @@ const ItemColores = ({ color, setColores }) => {
     handleClose();
   };
 
-
   return (
     <>
-      <Card className="text-center shadow-lg mb-2">
+      <Card className=" shadow-lg mb-2">
         <Card.Header>
           <span>
-            <b>{color.nombreColor} </b>
+            <b>{color.nombreColor.toUpperCase()}</b>
           </span>
         </Card.Header>
         <Card.Body className="d-flex justify-content-center flex-column">
@@ -77,20 +76,23 @@ const ItemColores = ({ color, setColores }) => {
             <MuestraColor
               fondo={color.codHexadecimal}
               className="text-center"
-            ></MuestraColor>   
+            ></MuestraColor>
           </div>
-          <span>
+          <span className="lead">
             <hr />
-            <b>{color.codHexadecimal}</b>
-          </span>     
-          <span>
-            <b>
-              R: {color.rgb.r}, G: {color.rgb.g}, B: {color.rgb.b}
-            </b>
+            {color.codHexadecimal}
+          </span>
+          <span className="lead">
+            R: {color.rgb.r}, G: {color.rgb.g}, B: {color.rgb.b}
           </span>
         </Card.Body>
         <Card.Footer className="text-muted ">
-          <Button variant="warning" className="me-1" title="Editar" onClick={abrirModal} >
+          <Button
+            variant="warning"
+            className="me-1"
+            title="Editar"
+            onClick={abrirModal}
+          >
             <i className="bi bi-pencil-square"></i>
           </Button>
           <Button variant="danger" title="Borrar" onClick={borrarColor}>
@@ -99,8 +101,8 @@ const ItemColores = ({ color, setColores }) => {
         </Card.Footer>
       </Card>
 
-      <Modal show={show} onHide={handleClose}>
-        <Form onSubmit={handleSubmit(editarColor)} >
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Form onSubmit={handleSubmit(editarColor)}>
           <Card className="text-center">
             <Card.Header className="display-6">Editar color</Card.Header>
             <Card.Body className="text-center d-flex justify-content-center flex-column">
@@ -123,6 +125,9 @@ const ItemColores = ({ color, setColores }) => {
             <Card.Footer className="text-muted">
               <Button variant="primary" type="submit">
                 Guardar
+              </Button>
+              <Button variant="danger" className='ms-2' onClick={handleClose}>
+                Cancelar
               </Button>
             </Card.Footer>
           </Card>

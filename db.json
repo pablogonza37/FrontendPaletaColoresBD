@@ -21,14 +21,14 @@
       "id": "4b2f"
     },
     {
-      "id": "c103",
-      "codHexadecimal": "#ffffff",
+      "codHexadecimal": "#000000",
       "rgb": {
-        "r": 255,
-        "g": 255,
-        "b": 255
+        "r": 0,
+        "g": 0,
+        "b": 0
       },
-      "nombreColor": "white"
+      "nombreColor": "black",
+      "id": "c103"
     },
     {
       "id": "73da",
@@ -119,6 +119,36 @@
         "b": 80
       },
       "nombreColor": "coral"
+    },
+    {
+      "codHexadecimal": "#ffffff",
+      "rgb": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "nombreColor": "white",
+      "id": "ea40"
+    },
+    {
+      "id": "ec05",
+      "codHexadecimal": "#000000",
+      "rgb": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "nombreColor": "black"
+    },
+    {
+      "codHexadecimal": "#ff0000",
+      "rgb": {
+        "r": 255,
+        "g": 0,
+        "b": 0
+      },
+      "nombreColor": "red",
+      "id": "f714"
     }
   ]
 }
