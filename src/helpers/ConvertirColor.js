@@ -1,5 +1,5 @@
 import colorName from "color-name";
-// Función para convertir un valor hexadecimal a RGB
+
 export const hexRgb = (hex) => {
   hex = hex.substring(1);
   var bigint = parseInt(hex, 16);
@@ -9,7 +9,7 @@ export const hexRgb = (hex) => {
   return { r: r, g: g, b: b };
 };
 
-// Función para buscar el nombre del color basado en su valor RGB
+
 export const encontrarNombreColor = (rgb) => {
   for (const name in colorName) {
     if (colorName.hasOwnProperty(name)) {
