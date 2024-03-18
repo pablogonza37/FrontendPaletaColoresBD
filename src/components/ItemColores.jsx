@@ -8,9 +8,9 @@ import {
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { encontrarNombreColor, hexRgb } from "../helpers/convertirColor";
 
-const ItemColores = ({ color, setColores }) => {
+
+const ItemColores = ({ color, setColores, encontrarNombreColor, hexRgb }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

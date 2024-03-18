@@ -3,7 +3,7 @@ import ListaColores from "./ListaColores";
 import { useState, useEffect } from "react";
 import { agregarColoresAPI, leerColoresAPI } from "../helpers/queries";
 import { useForm } from "react-hook-form";
-import { encontrarNombreColor, hexRgb } from "../helpers/convertirColor";
+import colorName from "color-name";
 
 const FormularioColor = () => {
   const [colores, setColores] = useState([]);
@@ -43,6 +43,30 @@ const FormularioColor = () => {
     consultarAPI();
   };
 
+  const hexRgb = (hex) => {
+    hex = hex.substring(1);
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+    return { r: r, g: g, b: b };
+  };
+
+  const encontrarNombreColor = (rgb) => {
+    for (const name in colorName) {
+      if (colorName.hasOwnProperty(name)) {
+        if (
+          colorName[name][0] === rgb.r &&
+          colorName[name][1] === rgb.g &&
+          colorName[name][2] === rgb.b
+        ) {
+          return name;
+        }
+      }
+    }
+    return "Color no identificado";
+  };
+
   const mostrarComponente = spinner ? (
     <div className="my-4 text-center">
       <Spinner animation="border" variant="warning" />
@@ -57,6 +81,8 @@ const FormularioColor = () => {
           <ListaColores
             colores={colores}
             setColores={setColores}
+            hexRgb={hexRgb}
+            encontrarNombreColor={encontrarNombreColor}
           ></ListaColores>
         </div>
       )}
