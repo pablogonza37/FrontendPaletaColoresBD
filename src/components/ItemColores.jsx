@@ -32,7 +32,7 @@ const ItemColores = ({ color, setColores }) => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const respuesta = await borrarColorAPI(color.id);
+        const respuesta = await borrarColorAPI(color._id);
         if (respuesta.status === 200) {
           const listaProductos = await leerColoresAPI();
           setColores(listaProductos);
@@ -57,7 +57,7 @@ const ItemColores = ({ color, setColores }) => {
     const nombreColor = encontrarNombreColor(rgb);
     codHexadecimal.rgb = rgb;
     codHexadecimal.nombreColor = nombreColor;
-    editarColorAPI(codHexadecimal, color.id);
+    editarColorAPI(codHexadecimal, color._id);
     const listaColores = await leerColoresAPI();
     setColores(listaColores);
     handleClose();
