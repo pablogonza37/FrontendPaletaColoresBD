@@ -4,6 +4,7 @@ const ColoredDiv = styled.div`
   width: 100px;
   height: 100px;
   border: 1px solid black;
+  border-radius: 10px;
   ${(props) =>
     props.backgroundColor && `background-color: ${props.backgroundColor};`}
 `;

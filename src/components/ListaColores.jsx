@@ -2,17 +2,13 @@ import ItemColores from "./ItemColores";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const ListaColores = ({ colores, borrarColor }) => {
-
+const ListaColores = ({ colores, setColores }) => {
   return (
-    <div className="my-3 text-center">
+    <div className="mt-5 text-center">
       <Row className="d-flex justify-content-center">
         {colores.map((color, posicionColor) => (
           <Col md={4} className="mb-2" key={posicionColor}>
-            <ItemColores
-              nombreColor={color}
-              borrarColor={borrarColor}
-            ></ItemColores>
+            <ItemColores color={color} setColores={setColores}></ItemColores>
           </Col>
         ))}
         ;

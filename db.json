@@ -1,0 +1,124 @@
+{
+  "colores": [
+    {
+      "codHexadecimal": "#000000",
+      "rgb": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "nombreColor": "black",
+      "id": "096b"
+    },
+    {
+      "codHexadecimal": "#ff0000",
+      "rgb": {
+        "r": 255,
+        "g": 0,
+        "b": 0
+      },
+      "nombreColor": "red",
+      "id": "4b2f"
+    },
+    {
+      "codHexadecimal": "#ffffff",
+      "rgb": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "nombreColor": "white",
+      "id": "c103"
+    },
+    {
+      "id": "73da",
+      "codHexadecimal": "#ffff00",
+      "rgb": {
+        "r": 255,
+        "g": 255,
+        "b": 0
+      },
+      "nombreColor": "yellow"
+    },
+    {
+      "id": "ffc3",
+      "codHexadecimal": "#008000",
+      "rgb": {
+        "r": 0,
+        "g": 128,
+        "b": 0
+      },
+      "nombreColor": "green"
+    },
+    {
+      "id": "4ddc",
+      "codHexadecimal": "#c0c0c0",
+      "rgb": {
+        "r": 192,
+        "g": 192,
+        "b": 192
+      },
+      "nombreColor": "silver"
+    },
+    {
+      "id": "62df",
+      "codHexadecimal": "#800000",
+      "rgb": {
+        "r": 128,
+        "g": 0,
+        "b": 0
+      },
+      "nombreColor": "maroon"
+    },
+    {
+      "id": "0100",
+      "codHexadecimal": "#808000",
+      "rgb": {
+        "r": 128,
+        "g": 128,
+        "b": 0
+      },
+      "nombreColor": "olive"
+    },
+    {
+      "id": "a246",
+      "codHexadecimal": "#00ffff",
+      "rgb": {
+        "r": 0,
+        "g": 255,
+        "b": 255
+      },
+      "nombreColor": "aqua"
+    },
+    {
+      "id": "812e",
+      "codHexadecimal": "#0000ff",
+      "rgb": {
+        "r": 0,
+        "g": 0,
+        "b": 255
+      },
+      "nombreColor": "blue"
+    },
+    {
+      "id": "4f4f",
+      "codHexadecimal": "#800080",
+      "rgb": {
+        "r": 128,
+        "g": 0,
+        "b": 128
+      },
+      "nombreColor": "purple"
+    },
+    {
+      "id": "7c91",
+      "codHexadecimal": "#ff7f50",
+      "rgb": {
+        "r": 255,
+        "g": 127,
+        "b": 80
+      },
+      "nombreColor": "coral"
+    }
+  ]
+}
