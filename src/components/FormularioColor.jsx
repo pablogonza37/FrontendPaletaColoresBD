@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { agregarColoresAPI, leerColoresAPI } from "../helpers/queries";
 import { useForm } from "react-hook-form";
 import colorName from "color-name";
+import Swal from "sweetalert2";
 
 const FormularioColor = () => {
   const [colores, setColores] = useState([]);
@@ -39,9 +40,28 @@ const FormularioColor = () => {
     const nombreColor = encontrarNombreColor(rgb);
     color.rgb = rgb;
     color.nombreColor = nombreColor;
-    const respuesta = await agregarColoresAPI(color);
-    consultarAPI();
-  };
+    try {
+    const respuesta =await agregarColoresAPI(color);
+    if (respuesta.status === 201) {
+    const nuevosColores = await leerColoresAPI();
+    setColores(nuevosColores.reverse());
+    setError(null);
+    Swal.fire({
+      title: "Color agregado!",
+      text: `El color fue agregado correctamente`,
+      icon: "success",
+    });
+  } else {
+    Swal.fire({
+      title: "Ocurrio un error!",
+      text: `El color no pudo ser agregado. Intente esta operacion en unos minutos`,
+      icon: "error",
+    });
+  }
+} catch (error) {
+  console.log(error);
+}
+};
 
   const hexRgb = (hex) => {
     hex = hex.substring(1);

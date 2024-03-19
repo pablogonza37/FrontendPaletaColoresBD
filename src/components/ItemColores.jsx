@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-
 const ItemColores = ({ color, setColores, encontrarNombreColor, hexRgb }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -35,7 +34,7 @@ const ItemColores = ({ color, setColores, encontrarNombreColor, hexRgb }) => {
         const respuesta = await borrarColorAPI(color._id);
         if (respuesta.status === 200) {
           const listaProductos = await leerColoresAPI();
-          setColores(listaProductos);
+          setColores(listaProductos.reverse());
         } else {
           Swal.fire({
             title: "Ocurrio un error",
@@ -57,10 +56,26 @@ const ItemColores = ({ color, setColores, encontrarNombreColor, hexRgb }) => {
     const nombreColor = encontrarNombreColor(rgb);
     codHexadecimal.rgb = rgb;
     codHexadecimal.nombreColor = nombreColor;
-    editarColorAPI(codHexadecimal, color._id);
-    const listaColores = await leerColoresAPI();
-    setColores(listaColores);
-    handleClose();
+    try {
+      const respuesta = await editarColorAPI(codHexadecimal, color._id);
+      if (respuesta.status === 200) {
+        const listaColores = await leerColoresAPI();
+        setColores(listaColores.reverse());
+        handleClose();
+        Swal.fire({
+          title: "Color modificado!",
+          text: `El color fue modificado correctamente`,
+          icon: "success",
+        });
+      }
+    } catch (error) {
+      console.error("Error al modificar el color:", error);
+      Swal.fire({
+        title: "Ocurrió un error",
+        text: "El color no pudo ser modificado. Por favor, inténtelo de nuevo más tarde.",
+        icon: "error",
+      });
+    }
   };
 
   return (
@@ -101,7 +116,12 @@ const ItemColores = ({ color, setColores, encontrarNombreColor, hexRgb }) => {
         </Card.Footer>
       </Card>
 
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
         <Form onSubmit={handleSubmit(editarColor)}>
           <Card className="text-center">
             <Card.Header className="display-6">Editar color</Card.Header>
@@ -126,7 +146,7 @@ const ItemColores = ({ color, setColores, encontrarNombreColor, hexRgb }) => {
               <Button variant="primary" type="submit">
                 Guardar
               </Button>
-              <Button variant="danger" className='ms-2' onClick={handleClose}>
+              <Button variant="danger" className="ms-2" onClick={handleClose}>
                 Cancelar
               </Button>
             </Card.Footer>
