@@ -3,7 +3,8 @@ import ListaColores from "./ListaColores";
 import { useState, useEffect } from "react";
 import { agregarColoresAPI, leerColoresAPI } from "../helpers/queries";
 import { useForm } from "react-hook-form";
-import { encontrarNombreColor, hexRgb } from "../helpers/convertirColor";
+import colorName from "color-name";
+import Swal from "sweetalert2";
 
 const FormularioColor = () => {
   const [colores, setColores] = useState([]);
@@ -39,8 +40,51 @@ const FormularioColor = () => {
     const nombreColor = encontrarNombreColor(rgb);
     color.rgb = rgb;
     color.nombreColor = nombreColor;
-    const respuesta = await agregarColoresAPI(color);
-    consultarAPI();
+    try {
+    const respuesta =await agregarColoresAPI(color);
+    if (respuesta.status === 201) {
+    const nuevosColores = await leerColoresAPI();
+    setColores(nuevosColores.reverse());
+    setError(null);
+    Swal.fire({
+      title: "Color agregado!",
+      text: `El color fue agregado correctamente`,
+      icon: "success",
+    });
+  } else {
+    Swal.fire({
+      title: "Ocurrio un error!",
+      text: `El color no pudo ser agregado. Intente esta operacion en unos minutos`,
+      icon: "error",
+    });
+  }
+} catch (error) {
+  console.log(error);
+}
+};
+
+  const hexRgb = (hex) => {
+    hex = hex.substring(1);
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+    return { r: r, g: g, b: b };
+  };
+
+  const encontrarNombreColor = (rgb) => {
+    for (const name in colorName) {
+      if (colorName.hasOwnProperty(name)) {
+        if (
+          colorName[name][0] === rgb.r &&
+          colorName[name][1] === rgb.g &&
+          colorName[name][2] === rgb.b
+        ) {
+          return name;
+        }
+      }
+    }
+    return "Color no identificado";
   };
 
   const mostrarComponente = spinner ? (
@@ -57,6 +101,8 @@ const FormularioColor = () => {
           <ListaColores
             colores={colores}
             setColores={setColores}
+            hexRgb={hexRgb}
+            encontrarNombreColor={encontrarNombreColor}
           ></ListaColores>
         </div>
       )}
