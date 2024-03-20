@@ -10,18 +10,7 @@ Eliminar Colores: Cada color guardado se muestra en la lista con un botón para 
 
 ## Demo
 
-Puedes ver una demostración del proyecto en vivo en [Netlify](https://super-choux-802129.netlify.app/).
-
-## Instalación
-Para ejecutar esta aplicación en tu entorno local, sigue estos pasos:
-
-- Clona este repositorio en tu máquina local utilizando Git: git clone https://github.com/pablogonza37/EjercicioReact6_paletaColores.git
-- Navega al directorio del proyecto: cd paleta-de-colores
-- Instala las dependencias del proyecto utilizando npm o yarn: npm install o yarn install
-- Una vez completada la instalación de las dependencias, puedes iniciar la aplicación: npm start o yarn start
-
-
-Esto iniciará la aplicación en el modo de desarrollo.
+Puedes ver una demostración del proyecto en vivo en [Netlify](https://paletacoloresbd.netlify.app/).
 
 ## Tecnologías Utilizadas
 
@@ -36,3 +25,6 @@ Esto iniciará la aplicación en el modo de desarrollo.
 
 ## Contribución
 Si deseas contribuir a este proyecto, ¡siéntete libre de hacerlo! Puedes abrir problemas para reportar errores o sugerir mejoras, o enviar solicitudes de extracción con tus contribuciones.
+
+## Autor
+Pablo Gonzalez.
